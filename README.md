@@ -1,9 +1,11 @@
-# hdu-cli
+# ecnu-cli
+
+**This repo is forked from https://github.com/hduhelp/hdu-cli**
 
 ## Installation Or Upgrade
 
 ```shell
-go install github.com/hduhelp/hdu-cli@latest
+go install github.com/DarkHighness/ecnu-cli@latest
 ```
 
 or direct download the release file which suffix match your platform.
@@ -13,10 +15,10 @@ or direct download the release file which suffix match your platform.
 use command like
 
 ```
-hdu-cli net login --username {Your student number} --password {Your HDU Cas Password} --save
+ecnu-cli net login --username {Your student number} --password {Your HDU Cas Password} --save
 ```
 
-or manually use the .hdu-cli.yaml and fill according the comments
+or manually use the .ecnu-cli.yaml and fill according the comments
 
 <details>
 <summary>Trouble shoot</summary>
@@ -25,14 +27,14 @@ or manually use the .hdu-cli.yaml and fill according the comments
 >
 > and sometimes go env is not install completely on your root account (sudo mode)
 >
-> so try like `sudo $GOROOT/bin/go install github.com/hduhelp/hdu-cli@latest`
+> so try like `sudo $GOROOT/bin/go install github.com/DarkHighness/ecnu-cli@latest`
 > 
 > By the way, if you follow the offical installation guide of GO, The goroot will be like /usr/local/go/
 </details>
 
 ## Usage
 
-### hdu-cli [sub command]
+### ecnu-cli [sub command]
 
 ### Available Sub Commands:
 
@@ -46,18 +48,18 @@ or manually use the .hdu-cli.yaml and fill according the comments
 ### Flags:
 
 - --config string   
-  - config file (default is $HOME/.hdu-cli.yaml)
-  - more detail see comments at [hdu-cli.yaml example](./.hdu-cli.yaml)
+  - config file (default is $HOME/.ecnu-cli.yaml)
+  - more detail see comments at [ecnu-cli.yaml example](./.ecnu-cli.yaml)
 - -h, --help            
-  - help for hdu_cli
+  - help for ecnu-cli
 - -s, --save            
   - save config
 - -V, --verbose         
   - show more info
 - -v, --version         
-  - version for hdu_cli
+  - version for ecnu-cli
 
 
-Use `hdu_cli [sub command] --help` for more information about a command.
+Use `ecnu-cli [sub command] --help` for more information about a command.
 
 

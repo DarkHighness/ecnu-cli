@@ -11,7 +11,7 @@ import (
 
 	authv1 "github.com/hduhelp/api_open_sdk/gatewayapis/auth/v1"
 	grpcclient "github.com/hduhelp/api_open_sdk/grpcClient"
-	"github.com/hduhelp/hdu-cli/pkg/table"
+	"github.com/DarkHighness/ecnu-cli/pkg/table"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -49,7 +49,7 @@ var loginCmd = &cobra.Command{
 				ln.Close()
 			}()
 		})
-		loginUrl, _ := url.Parse("https://api.hduhelp.com/login/auto")
+		loginUrl, _ := url.Parse("https://login.ecnu.edu.cn/login/auto")
 		loginUrl.RawQuery = url.Values{
 			"clientID": {"dashboard"},
 			"redirect": {"http://localhost:11328"},

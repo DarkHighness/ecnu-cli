@@ -1,7 +1,16 @@
-ihdu_cli
-hdu_cli
-hdu-cli
-.hdu_cli.yaml
+ecnu-cli
+.ecnu-cli.yaml
 .idea
 /vendor
 dist/
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+

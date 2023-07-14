@@ -10,12 +10,17 @@ builds:
       - "386"
       - arm
 archives:
-  - replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}      
+    format_overrides:
+    - goos: windows
+      format: zip
 checksum:
   name_template: 'checksums.txt'
 snapshot:
@@ -27,46 +32,23 @@ changelog:
       - '^docs:'
       - '^test:'
 
-release:
-  header: |
-    ## Hi! 欢迎使用HDU-CLI ({{ .Date }})
-
-    此处是版本介绍
-
-  footer: |
-    ## 感谢您的支持!
-
-    以上就是在 {{ .Tag }} 上的改动!
-  name_template: "{{.ProjectName}}-v{{.Version}} {{.Env.USER}}"
-
-
 nfpms:
   -
     # ID of the nfpm config, must be unique.
     # Defaults to "default".
     id: packages
 
-    # Replacements for GOOS and GOARCH in the package name.
-    # Keys should be valid GOOSs or GOARCHs.
-    # Values are the respective replacements.
-    # Default is empty.
-    replacements:
-      amd64: 64-bit
-      386: 32-bit
-      darwin: macOS
-      linux: Tux
-
     # Your app's vendor.
     # Default is empty.
-    vendor: HDUHELP
+    vendor: DarkHighness
 
     # Template to your app's homepage.
     # Default is empty.
-    homepage: https://github.com/hduhelp/hdu-cli
+    homepage: https://github.com/DarkHighness/ecnu-cli
 
     # Your app's maintainer (probably you).
     # Default is empty.
-    maintainer: HDUHELP
+    maintainer: DarkHighness
     # Your app's license.
     # Default is empty.
     license: Apache 2.0
@@ -75,12 +57,3 @@ nfpms:
     formats:
       - deb
       - rpm
-
-publishers:
-  - name: fury.io
-    # by specifying `packages` id here goreleaser will only use this publisher
-    # with artifacts identified by this id{{ .Env.FURY_TOKEN }}
-    ids:
-      - packages
-    dir: "{{ dir .ArtifactPath }}"
-    cmd: curl -F package=@{{ .ArtifactName }} https://{{ .Env.FURY_TOKEN }}@push.fury.io/{{ .Env.FURY_USER_NAME }}/

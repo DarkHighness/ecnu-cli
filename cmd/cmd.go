@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hduhelp/hdu-cli/cmd/auth"
-	"github.com/hduhelp/hdu-cli/cmd/net"
-	"github.com/hduhelp/hdu-cli/cmd/rpc"
+	"github.com/DarkHighness/ecnu-cli/cmd/auth"
+	"github.com/DarkHighness/ecnu-cli/cmd/net"
+	"github.com/DarkHighness/ecnu-cli/cmd/rpc"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:     "hdu_cli",
+	Use:     "ecnu-cli",
 	Short:   "hdu cli",
 	Version: "alpha",
 	PersistentPostRun: func(cmd *cobra.Command, args []string) {
@@ -36,7 +36,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.hdu-cli.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.ecnu-cli.yaml)")
 	rootCmd.PersistentFlags().BoolP("save", "s", false, "save config")
 	cobra.CheckErr(viper.BindPFlag("save", rootCmd.PersistentFlags().Lookup("save")))
 	rootCmd.PersistentFlags().BoolP("verbose", "V", false, "show more info")
@@ -57,10 +57,10 @@ func initConfig() {
 		home, err := os.UserHomeDir()
 		cobra.CheckErr(err)
 
-		// Search config in home directory with name ".hdu_cli" (without extension).
+		// Search config in home directory with name ".ecnu-cli" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigType("yaml")
-		viper.SetConfigName(".hdu-cli")
+		viper.SetConfigName(".ecnu-cli")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match

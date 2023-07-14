@@ -2,8 +2,8 @@ package net
 
 import (
 	"fmt"
-	"github.com/hduhelp/hdu-cli/pkg/srun"
-	"github.com/hduhelp/hdu-cli/pkg/table"
+	"github.com/DarkHighness/ecnu-cli/pkg/srun"
+	"github.com/DarkHighness/ecnu-cli/pkg/table"
 	"github.com/parnurzeal/gorequest"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -27,7 +27,7 @@ var portalServer *srun.PortalServer
 
 func init() {
 	Cmd.PersistentFlags().StringP("endpoint", "e", "", "endpoint host of srun")
-	viper.SetDefault("net.endpoint", "http://192.168.112.30")
+	viper.SetDefault("net.endpoint", "https://login.ecnu.edu.cn")
 	cobra.CheckErr(viper.BindPFlag("net.endpoint", Cmd.PersistentFlags().Lookup("endpoint")))
 
 	Cmd.PersistentFlags().StringP("acid", "a", "", "ac_id of srun")
@@ -37,7 +37,7 @@ func init() {
 	} else if acid := resp.Request.URL.Query().Get("ac_id"); acid != "" {
 		viper.SetDefault("net.acid", acid)
 	} else {
-		viper.SetDefault("net.acid", "0")
+		viper.SetDefault("net.acid", "1")
 	}
 	cobra.CheckErr(viper.BindPFlag("net.acid", Cmd.PersistentFlags().Lookup("acid")))
 

@@ -13,7 +13,7 @@ import (
 	teachingv1 "github.com/hduhelp/api_open_sdk/campusapis/teaching/v1"
 	authv1 "github.com/hduhelp/api_open_sdk/gatewayapis/auth/v1"
 	grpcclient "github.com/hduhelp/api_open_sdk/grpcClient"
-	"github.com/hduhelp/hdu-cli/pkg/table"
+	"github.com/DarkHighness/ecnu-cli/pkg/table"
 	"github.com/manifoldco/promptui"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"

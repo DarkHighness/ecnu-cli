@@ -1,4 +1,4 @@
-module github.com/hduhelp/hdu-cli
+module github.com/DarkHighness/ecnu-cli
 
 go 1.18
 
